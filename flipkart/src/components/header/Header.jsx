@@ -24,12 +24,11 @@ const PluseImge = styled("img")({
   marginLeft: 4,
 });
 
+const CustomBtnWrapper = styled(Box)`
+  margin: 0 5% 0 auto;
+`;
 
-const CustomBtnWrapper=styled(Box)`
-  margin:0 5% 0 auto ;
-`
-
-function Navbar() {
+function Header() {
   const logoURL =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png";
 
@@ -37,9 +36,13 @@ function Navbar() {
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
   return (
     <StyledHeader>
-      <Toolbar style={{ minHeight:55}}>
+      <Toolbar style={{ minHeight: 55 }}>
         <Component>
-          <img src={logoURL} alt="logo" style={{ height: "20px",marginRight:30 }} />
+          <img
+            src={logoURL}
+            alt="logo"
+            style={{ height: "20px", marginRight: 30 }}
+          />
           <Box style={{ display: "flex" }}>
             <Subheading>
               Explore{" "}
@@ -59,4 +62,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Header;
