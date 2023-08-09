@@ -141,10 +141,10 @@ function LoginDialog({ open, setOpen }) {
 
   const loginUer = async () => {
     let res = await loginUser(login);
-    console.log(res)
+    console.log("this",res)
     if (res.status === 200) {
       handleClose();
-      setAccount(res.data.data.firstname);
+      setAccount(res?.data?.isUserPresent?.firstname);
     } else {
       setError(true);
     }
@@ -168,13 +168,15 @@ function LoginDialog({ open, setOpen }) {
             <Wrapper>
               <TextField
                 variant="standard"
+                type="email"
                 onChange={(e) => onValueChange(e)}
                 name="email"
                 label="Enter Email"
               />
-              {error && <Error>Please enter valid username or password</Error>}
+              {error && <Error>Please enter valid email or password</Error>}
               <TextField
                 variant="standard"
+                type="text"
                 onChange={(e) => onValueChange(e)}
                 name="password"
                 label="Enter Password"
@@ -195,23 +197,27 @@ function LoginDialog({ open, setOpen }) {
               <TextField
                 variant="standard"
                 name="firstname"
+                type="text"
                 label="Enter Firstname"
                 onChange={(e) => onInputChange(e)}
               />
               <TextField
                 variant="standard"
                 name="lastname"
+                type="text"
                 label="Enter Lastname"
                 onChange={(e) => onInputChange(e)}
               />
               <TextField
                 variant="standard"
                 name="email"
+                type="email"
                 label="Enter Email"
                 onChange={(e) => onInputChange(e)}
               />
               <TextField
                 variant="standard"
+                type="text"
                 name="password"
                 label="Enter Password"
                 onChange={(e) => onInputChange(e)}
@@ -219,6 +225,7 @@ function LoginDialog({ open, setOpen }) {
               <TextField
                 variant="standard"
                 name="phone"
+                type="number"
                 label="Enter Phone"
                 onChange={(e) => onInputChange(e)}
               />
