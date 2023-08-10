@@ -1,3 +1,6 @@
+"use strict"
+
+
 import { Box, Typography, Button, styled, Divider } from "@mui/material";
 import React from "react";
 import Carousel from "react-multi-carousel";
@@ -5,22 +8,8 @@ import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+
 
 const Componenet = styled(Box)`
   margin-top: 10px;
@@ -64,6 +53,23 @@ const Text = styled(Typography)`
   margin-top: 5px;
 `;
 
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+
 function Slide({ products, title, timer }) {
   const renderer = ({ hours, minutes, seconds }) => {
     return (
@@ -105,10 +111,11 @@ function Slide({ products, title, timer }) {
         slidesToSlide={1}
         keyBoardControl={true}
         centerMode={true}
+        containerClass="carousel-container"
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {products?.map((product) => (
+        {products && products?.map((product) => (
           <Link to={`product/${product.id}`} style={{textDecoration:"none"}}>
             <Box textAlign={"center"} style={{ padding: "25px 15px" }}>
               <Image src={product.url} alt="product" />

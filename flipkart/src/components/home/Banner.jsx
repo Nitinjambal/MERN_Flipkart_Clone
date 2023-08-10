@@ -1,7 +1,10 @@
+"use strict"
+
+
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { bannerData } from "../../constansts/data";
+import { bannerData } from "../../constansts/data.js";
 
 import { styled } from "@mui/material";
 
@@ -35,6 +38,7 @@ function Banner() {
   return (
     <Carousel
       responsive={responsive}
+      ssr={true}
       swipeable={false}
       draggable={false}
       infinite={true}
@@ -42,11 +46,12 @@ function Banner() {
       autoPlaySpeed={3000}
       slidesToSlide={1}
       keyBoardControl={true}
+      containerClass="carousel-container"
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-      {bannerData?.map((el) => {
-        return <Image key={el.id} src={el.url} alt="banner" />;
+      {bannerData && bannerData?.map((el) => {
+        return( <Image key={el.id} src={el.url} alt="banner" />)
       })}
     </Carousel>
   );

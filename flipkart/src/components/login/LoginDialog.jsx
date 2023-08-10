@@ -112,7 +112,6 @@ function LoginDialog({ open, setOpen }) {
   const [login, setLogin] = useState(loginInitialValue);
   const [error, setError] = useState(false);
 
-  console.log(signup);
   const handleClose = () => {
     setOpen(false);
     toggleAccount(initialValue.login);
