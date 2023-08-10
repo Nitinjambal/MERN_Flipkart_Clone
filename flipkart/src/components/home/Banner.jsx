@@ -2,12 +2,19 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { bannerData } from "../../constansts/data";
-import styled from "@emotion/styled";
 
-const Image = styled("img")({
+import { styled } from "@mui/material";
+
+const Image = styled("img")(({ theme }) => ({
   width: "100%",
-  height: 180,
-});
+  height: 280,
+  [theme.breakpoints.down("md")]: {
+    objectFit: "cover",
+    height: 180,
+  }
+}));
+
+
 
 const responsive = {
   desktop: {
@@ -22,7 +29,7 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
-};
+}
 
 function Banner() {
   return (
@@ -34,6 +41,7 @@ function Banner() {
       autoPlay={true}
       autoPlaySpeed={3000}
       slidesToSlide={1}
+      keyBoardControl={true}
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >

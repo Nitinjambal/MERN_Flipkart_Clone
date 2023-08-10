@@ -1,10 +1,11 @@
-import { GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./acitonTypes"
+import { GET_PRODUCT_DETAILS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./acitonTypes.js"
 
 
 const initialState = {
     isLoading: false,
     isError: false,
-    products: []
+    products: [],
+    singleProduct:{}
 }
 
 
@@ -25,7 +26,10 @@ export const reducer = (state = initialState, { type, payload }) => {
                 ...state, isLoading: false, isError: true
             }
 
-
+        case GET_PRODUCT_DETAILS_SUCCESS:
+            return{
+                ...state,isLoading:false,isError:false,singleProduct:payload
+            }
 
         default:
             return state
