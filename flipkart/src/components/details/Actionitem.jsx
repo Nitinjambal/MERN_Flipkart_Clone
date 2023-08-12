@@ -3,21 +3,30 @@ import { Box, Button, styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 
-const LeftContainer = styled(Box)`
-  min-width: 40%;
-  padding: 40px 0 0 80px;
-`;
+const LeftContainer = styled(Box)(({ theme }) => ({
+  minWidth: "40%",
+  padding: "40px 0 0 80px",
+  [theme.breakpoints.down("md")]: {
+    padding: "20px 40px",
+  },
+}));
+
 
 const Image = styled("img")({
   padding: "15px",
 });
 
-const StyledBtn = styled(Button)`
-  width: 48%;
-  height: 50px;
-  border-radius: 2px;
-`;
-
+const StyledBtn = styled(Button)(({ theme }) => ({
+  width: " 48%",
+  height: 50,
+  borderRadius: 2,
+  [theme.breakpoints.down("lg")]: {
+    width: "46%",
+  },
+  [theme.breakpoints.down("sm")]:{
+    width:"48%"
+  }
+}));
 
 function Actionitem({ product }) {
   return (

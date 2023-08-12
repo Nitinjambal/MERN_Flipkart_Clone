@@ -19,6 +19,7 @@ export const getProducts = () => async (dispatch) => {
 
 
 
+
 export const getProductDetails = (id) => async (dispatch) => {
     dispatch({ type: GET_PRODUCT_REQUEST })
     try {
