@@ -5,21 +5,27 @@ import LoginDialog from "../login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
 import Profile from "./Profile";
 
-const Wrapper = styled(Box)`
-  display: flex;
-  margin: 0 3% 0 auto;
-  & > button,
-  & > p,
-  & > div {
-    margin-right: 40px;
-    font-size: 16px;
-    align-items: center;
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  margin: "0 3% 0 auto",
+  "& >*": {
+    marginRight: "40px !important",
+    fontSize: "16px",
+    alignItems: "center",
+  },
+  [theme.breakpoints.down("md")]:{
+    display:"block"
   }
-`;
+}));
 
-const Container = styled(Box)`
-  display: flex;
-`;
+
+
+const Container = styled(Box)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 const LoginBtn = styled(Button)`
   color: #2874f0;
@@ -34,7 +40,7 @@ const LoginBtn = styled(Button)`
 
 function CustomButton() {
   const [open, setOpen] = useState(false);
-  const { account,setAccount } = useContext(DataContext);
+  const { account, setAccount } = useContext(DataContext);
 
   const openDialog = () => {
     setOpen(true);
@@ -43,7 +49,7 @@ function CustomButton() {
   return (
     <Wrapper>
       {account !== "" ? (
-        <Profile account={account} setAccount={setAccount}  />
+        <Profile account={account} setAccount={setAccount} />
       ) : (
         <LoginBtn variant="contained" onClick={() => openDialog()}>
           Login

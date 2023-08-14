@@ -1,5 +1,16 @@
-import { AppBar, Toolbar, styled, Box, Typography } from "@mui/material";
-import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  Drawer,
+  Box,
+  Typography,
+  IconButton,
+  List,
+  ListItem,
+  styled,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import React, { useState } from "react";
 import Search from "./Search";
 import CustomButton from "./CustomButton";
 import { Link } from "react-router-dom";
@@ -27,19 +38,58 @@ const PluseImge = styled("img")({
   marginLeft: 4,
 });
 
-const CustomBtnWrapper = styled(Box)`
-  margin: 0 5% 0 auto;
-`;
+const CustomBtnWrapper = styled(Box)(({ theme }) => ({
+  margin: "0 5% 0 auto",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
+
+const MenuBtn = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 function Header() {
+  const [open, setOpen] = useState(false);
+
   const logoURL =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png";
 
   const subURL =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const list = () => (
+    <Box styl={{width:200}} onClick={handleClose}>
+      <List>
+        <ListItem button>
+          <CustomButton/>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 55 }}>
+        <MenuBtn color="inherit" onClick={handleOpen}>
+          <MenuIcon />
+        </MenuBtn>
+
+        <Drawer open={open} onClose={handleClose}>
+          {list()}
+        </Drawer>
+
         <Component to="/">
           <img
             src={logoURL}
