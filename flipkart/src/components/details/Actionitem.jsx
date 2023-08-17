@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartReducer/action";
+import { payUsingPaytm } from "../../service/api";
+import {post} from "../../utils/paytm";
 
 const LeftContainer = styled(Box)(({ theme }) => ({
   minWidth: "40%",
@@ -10,7 +15,6 @@ const LeftContainer = styled(Box)(({ theme }) => ({
     padding: "20px 40px",
   },
 }));
-
 
 const Image = styled("img")({
   padding: "15px",
@@ -23,12 +27,34 @@ const StyledBtn = styled(Button)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     width: "46%",
   },
-  [theme.breakpoints.down("sm")]:{
-    width:"48%"
-  }
+  [theme.breakpoints.down("sm")]: {
+    width: "48%",
+  },
 }));
 
+
 function Actionitem({ product }) {
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id } = product;
+
+
+
+  const addItemToCart = () => {
+    dispatch(addToCart(id, quantity));
+    navigate("/cart");
+  };
+
+  const buyNow=async()=>{
+   let respose= await payUsingPaytm({amount:500,email:"demo@gmail.com"})
+   let information={
+    action:'https://securegw-stage.paytm.in/order/process',
+    params:respose
+   }
+   post(information);
+  }
+
   return (
     <LeftContainer>
       <Box
@@ -40,17 +66,18 @@ function Actionitem({ product }) {
       >
         <Image src={product.detailUrl} alt="product" />
       </Box>
-      <Button
+      <StyledBtn
         variant="contained"
         style={{ marginLeft: "10px", background: "#ff9f00" }}
+        onClick={() => addItemToCart()}
       >
         <ShoppingCartIcon />
         Add to Cart
-      </Button>
-      <Button variant="contained" style={{ background: "#FB541B" }}>
+      </StyledBtn>
+      <StyledBtn variant="contained" onClick={()=>buyNow()} style={{ background: "#FB541B" }}>
         <FlashOnIcon />
         Buy Now
-      </Button>
+      </StyledBtn>
     </LeftContainer>
   );
 }

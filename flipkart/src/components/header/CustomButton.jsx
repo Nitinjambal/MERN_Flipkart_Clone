@@ -1,9 +1,12 @@
-import { Box, Button, Typography, styled } from "@mui/material";
+import { Badge, Box, Button, Typography, styled } from "@mui/material";
 import React, { useContext, useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginDialog from "../login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
 import Profile from "./Profile";
+import { Link } from "react-router-dom";
+import CartItem from "../Cart/CartItem";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -13,15 +16,15 @@ const Wrapper = styled(Box)(({ theme }) => ({
     fontSize: "16px",
     alignItems: "center",
   },
-  [theme.breakpoints.down("md")]:{
-    display:"block"
-  }
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
 }));
 
-
-
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Link)(({ theme }) => ({
   display: "flex",
+  textDecoration: "none",
+  color: "inherit",
   [theme.breakpoints.down("md")]: {
     display: "block",
   },
@@ -38,10 +41,13 @@ const LoginBtn = styled(Button)`
   height: 32px;
 `;
 
+
+
+
 function CustomButton() {
   const [open, setOpen] = useState(false);
   const { account, setAccount } = useContext(DataContext);
-
+   const {CartItems} =useSelector(state=>(state.cartReducer))
   const openDialog = () => {
     setOpen(true);
   };
@@ -59,13 +65,16 @@ function CustomButton() {
         Become a Seller
       </Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
-      <Container>
-        <ShoppingCartIcon />
-        <Typography>Cart</Typography>
+      <Container to="/cart">
+        <Badge badgeContent={CartItems?.length} color="secondary">
+          <ShoppingCartIcon />
+        </Badge>
+        <Typography style={{marginLeft:10}}>Cart</Typography>
       </Container>
       <LoginDialog open={open} setOpen={setOpen} />
     </Wrapper>
   );
 }
+
 
 export default CustomButton;
