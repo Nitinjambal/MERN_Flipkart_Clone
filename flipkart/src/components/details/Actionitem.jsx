@@ -54,6 +54,7 @@ function Actionitem({ product }) {
    }
    post(information);
   }
+  
 
   return (
     <LeftContainer>
