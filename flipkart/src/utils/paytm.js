@@ -20,7 +20,7 @@ function buildForm({ action, params }) {
     form.setAttribute('method', 'post')
     form.setAttribute('action', action)
 
-    
+
     Object.keys(params).forEach(key => {
         const input = document.createElement('input')
         input.setAttribute('type', 'hidden')

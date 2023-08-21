@@ -134,7 +134,7 @@ function ProductDetail({ product }) {
 
           <ColumnText>
             <TableCell style={{ color: "#878787" }}>Description</TableCell>
-            <TableCell>{product.description}</TableCell>
+            {/* <TableCell>{product.description}</TableCell> */}
           </ColumnText>
         </TableBody>
       </Table>

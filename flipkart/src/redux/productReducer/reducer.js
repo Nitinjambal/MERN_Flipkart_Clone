@@ -5,7 +5,7 @@ const initialState = {
     isLoading: false,
     isError: false,
     products: [],
-    singleProduct:{}
+    singleProduct: {}
 }
 
 
@@ -15,6 +15,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state, isLoading: true, isError: false
             }
+
 
         case GET_PRODUCT_SUCCESS:
             return {
@@ -27,11 +28,10 @@ export const reducer = (state = initialState, { type, payload }) => {
             }
 
         case GET_PRODUCT_DETAILS_SUCCESS:
-            return{
-                ...state,isLoading:false,isError:false,singleProduct:payload
+            return {
+                ...state, isLoading: false, isError: false, singleProduct: payload, products: []
             }
-
-        default:
+        default:    
             return state
 
     }

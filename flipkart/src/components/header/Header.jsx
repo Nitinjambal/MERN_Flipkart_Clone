@@ -32,7 +32,7 @@ const Subheading = styled(Typography)`
   font-style: italic;
 `;
 
-const PluseImge = styled("img")({
+const PlusImge = styled("img")({
   width: 10,
   height: 10,
   marginLeft: 4,
@@ -70,10 +70,10 @@ function Header() {
   };
 
   const list = () => (
-    <Box styl={{width:200}} onClick={handleClose}>
+    <Box styl={{ width: 200 }} onClick={handleClose}>
       <List>
         <ListItem button>
-          <CustomButton/>
+          <CustomButton />
         </ListItem>
       </List>
     </Box>
@@ -94,7 +94,7 @@ function Header() {
           <img
             src={logoURL}
             alt="logo"
-            style={{ height: "20px", marginRight: 30 }}
+            style={{ width: 75, marginRight: 30 }}
           />
           <Box style={{ display: "flex" }}>
             <Subheading>
@@ -103,7 +103,7 @@ function Header() {
                 Plus
               </Box>
             </Subheading>
-            <PluseImge src={subURL} alt="sub_logo" />
+            <PlusImge src={subURL} alt="sub_logo" />
           </Box>
         </Component>
         <Search />

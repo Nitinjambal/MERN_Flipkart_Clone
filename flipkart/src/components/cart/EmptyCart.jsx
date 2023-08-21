@@ -13,15 +13,13 @@ const Container = styled(Box)`
   padding-top: 70px;
 `;
 
-
-
 function EmptyCart() {
   const imgurl =
     "https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90";
   return (
     <Component>
       <Container>
-        <img src={imgurl} style={{width:"15%"}} alt="empty" />
+        <img src={imgurl} style={{ width: "15%" }} alt="empty" />
         <Typography>Your cart is empty</Typography>
         <Typography>Add items to it now</Typography>
       </Container>

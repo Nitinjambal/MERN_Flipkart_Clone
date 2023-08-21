@@ -28,25 +28,27 @@ const RightContainer = styled(Grid)`
 function DetailView() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const state = useSelector((store) => store.productReducer.singleProduct);
+  const {product} = useSelector((store) => store.productReducer.singleProduct);
 
 
   useEffect(() => {
+    if(product && id!==product.id)
     dispatch(getProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,product]);
 
-  console.log("state", state);
+  console.log("state", product);
 
   return (
     <Component>
       {
+       product && Object.keys(product).length &&  
         <Container container>
           <Grid item lg={4} md={4} sm={8} xs={12}>
-            <Actionitem product={state} />
+            <Actionitem product={product} />
           </Grid>
           <RightContainer item lg={8} md={8} sm={8} xs={12}>
           
-            <ProductDetail product={state} />
+            <ProductDetail product={product} />
           </RightContainer>
         </Container>
       }

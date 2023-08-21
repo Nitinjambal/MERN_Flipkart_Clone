@@ -37,7 +37,7 @@ function Actionitem({ product }) {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = product;
+  // const { id } = product;
 
 
 
@@ -72,6 +72,7 @@ function Actionitem({ product }) {
         style={{ marginLeft: "10px", background: "#ff9f00" }}
         onClick={() => addItemToCart()}
       >
+        
         <ShoppingCartIcon />
         Add to Cart
       </StyledBtn>
@@ -82,5 +83,6 @@ function Actionitem({ product }) {
     </LeftContainer>
   );
 }
+
 
 export default Actionitem;

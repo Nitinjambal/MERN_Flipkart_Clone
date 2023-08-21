@@ -1,16 +1,16 @@
 import { Typography, Box, Button, styled } from "@mui/material";
 import React from "react";
 import { addEllipsis } from "../../utils/common-utils.js";
-import BtnGroup from "./ButtonGroup.jsx";
 import { removeFromCart } from "../../redux/cartReducer/action.js";
 import { useDispatch } from "react-redux";
-
+import BtnGroup from "./ButtonGroup.jsx";
 
 const Component = styled(Box)`
   border-top: 1px solid #f0f0f0;
   display: flex;
   background-color: #fff;
 `;
+
 
 const LeftComponent = styled(Box)`
   margin: 20px;
@@ -24,7 +24,6 @@ const SmallText = styled(Typography)`
   margin-top: 10px;
 `;
 
-
 const Remove = styled(Button)`
   margin-top: 20px;
   font-size: 16px;
@@ -33,22 +32,26 @@ const Remove = styled(Button)`
 `;
 
 function CartItem({ item }) {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const { product } = item;
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
-    const removeItemFromCart=(id)=>{
-      console.log('id:', id)
-      dispatch(removeFromCart(id))
-    }
+  const removeItemFromCart = (id) => {
+    console.log("id:", id);
+    dispatch(removeFromCart(id));
+  };
   return (
     <Component>
       <LeftComponent>
-        <img src={product.url} alt="product" style={{height:110,width:110}}/>
-        <BtnGroup/>
+        <img
+          src={product.url}
+          alt="product"
+          style={{ height: 110, width: 110 }}
+        />
+        <BtnGroup />
       </LeftComponent>
-      <Box style={{margin:"20px" }}>
+      <Box style={{ margin: "20px" }}>
         <Typography>{addEllipsis(product.title.longTitle)}</Typography>
         <SmallText>
           Seller:RetailNet
@@ -72,7 +75,7 @@ function CartItem({ item }) {
             {product?.price?.discount}
           </Box>
         </Typography>
-        <Remove onClick={()=>removeItemFromCart(product.id)}>Remove</Remove>
+        <Remove onClick={() => removeItemFromCart(product.id)}>Remove</Remove>
       </Box>
     </Component>
   );

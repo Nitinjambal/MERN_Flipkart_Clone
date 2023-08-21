@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { loginUser, signupUser } from "../../service/api";
 import { DataContext } from "../../context/DataProvider";
+import { Link } from "react-router-dom";
 
 const Component = styled(Box)`
   height: 70vh;
@@ -41,12 +42,19 @@ const Wrapper = styled(Box)`
   }
 `;
 
+
+
+
 const LoginBtn = styled(Button)`
   text-transform: none;
   background: #fb641b;
   color: #fff;
   height: 40px;
   border-radius: 2px;
+  :hover {
+    background: #fb641b;
+    color: #fff;
+  }
 `;
 
 const RequestOtp = styled(Button)`
@@ -122,6 +130,10 @@ function LoginDialog({ open, setOpen }) {
     toggleAccount(initialValue.signup);
   };
 
+  const toggleLogin = () => {
+    toggleAccount(initialValue.login);
+  };
+
   const onInputChange = (e) => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
   };
@@ -131,23 +143,30 @@ function LoginDialog({ open, setOpen }) {
     console.log(" res:", res);
     if (!res) return;
     handleClose();
-    setAccount(signup.firstname);
+    setAccount(signup.firstname+signup.lastname);
+
   };
+
+  console.log(signup);
 
   const onValueChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
+
   const loginUer = async () => {
     let res = await loginUser(login);
-    console.log("this",res)
-    if (res.status === 200) {
+    console.log("this", res);
+    if (res.status == 200) {
       handleClose();
-      setAccount(res?.data?.isUserPresent?.firstname);
+      setAccount(res.data.isUserPresent.firstname);
     } else {
       setError(true);
     }
   };
+  
+
+  console.log(login);
 
   return (
     <Dialog
@@ -175,7 +194,7 @@ function LoginDialog({ open, setOpen }) {
               {error && <Error>Please enter valid email or password</Error>}
               <TextField
                 variant="standard"
-                type="text"
+                type="password"
                 onChange={(e) => onValueChange(e)}
                 name="password"
                 label="Enter Password"
@@ -221,6 +240,7 @@ function LoginDialog({ open, setOpen }) {
                 label="Enter Password"
                 onChange={(e) => onInputChange(e)}
               />
+
               <TextField
                 variant="standard"
                 name="phone"
@@ -229,7 +249,9 @@ function LoginDialog({ open, setOpen }) {
                 onChange={(e) => onInputChange(e)}
               />
               <LoginBtn onClick={() => handleSignup()}>Continue</LoginBtn>
-              <RequestOtp>Existing User? Log in</RequestOtp>
+              <RequestOtp onClick={() => toggleLogin()}>
+                Existing User? Log in
+              </RequestOtp>
             </Wrapper>
           )}
         </Box>

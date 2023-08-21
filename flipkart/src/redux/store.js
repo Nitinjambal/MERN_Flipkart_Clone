@@ -1,6 +1,6 @@
 import { combineReducers, legacy_createStore, applyMiddleware } from "redux";
-import {reducer as productReducer} from "./productReducer/reducer.js"
-import {reducer as cartReducer} from "./cartReducer/reducer.js"
+import { reducer as productReducer } from "./productReducer/reducer.js"
+import { reducer as cartReducer } from "./cartReducer/reducer.js"
 import { composeWithDevTools } from "redux-devtools-extension"
 import thunk from "redux-thunk"
 

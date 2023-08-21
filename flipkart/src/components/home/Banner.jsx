@@ -1,10 +1,7 @@
-"use strict"
-
-
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { bannerData } from "../../constansts/data.js";
+import { bannerData } from "../../constansts/data";
 
 import { styled } from "@mui/material";
 
@@ -14,10 +11,8 @@ const Image = styled("img")(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     objectFit: "cover",
     height: 180,
-  }
+  },
 }));
-
-
 
 const responsive = {
   desktop: {
@@ -32,7 +27,7 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
-}
+};
 
 function Banner() {
   return (
@@ -50,9 +45,10 @@ function Banner() {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-      {bannerData && bannerData?.map((el) => {
-        return( <Image key={el.id} src={el.url} alt="banner" />)
-      })}
+      {bannerData &&
+        bannerData?.map(data => (
+          <Image key={data.id} src={data.url} alt="banner" />
+        ))}
     </Carousel>
   );
 }

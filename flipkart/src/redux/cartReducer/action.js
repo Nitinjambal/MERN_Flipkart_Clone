@@ -10,7 +10,7 @@ export const addToCart = (id, quantity) => async (dispatch) => {
         const { data } = await axios.get(`${URL}/product/${id}`)
         console.log('dataProduct:', data.product)
         console.log('data:', data)
- 
+
 
         dispatch({ type: ADD_CART_SUCCESS, payload: { ...data, quantity } })
     } catch (error) {

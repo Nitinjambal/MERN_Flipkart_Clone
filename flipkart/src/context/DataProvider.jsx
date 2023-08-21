@@ -5,9 +5,10 @@ export const DataContext=createContext(null);
 
 
 const DataProvider=({children})=>{
-const [account,setAccount]=useState("")
+const [account,setAccount]=useState("");
+const [auth,setAuth]=useState(false)
     return(
-        <DataContext.Provider value={{account,setAccount}}>
+        <DataContext.Provider value={{account,setAccount,auth,setAuth}}>
            { children}
         </DataContext.Provider>
     )

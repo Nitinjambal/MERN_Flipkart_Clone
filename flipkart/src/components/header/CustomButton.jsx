@@ -39,19 +39,20 @@ const LoginBtn = styled(Button)`
   box-shadow: none;
   font-weight: 600;
   height: 32px;
+  :hover {
+    color: white;
+  }
 `;
-
-
-
 
 function CustomButton() {
   const [open, setOpen] = useState(false);
   const { account, setAccount } = useContext(DataContext);
-   const {CartItems} =useSelector(state=>(state.cartReducer))
+  const { CartItems } = useSelector((state) => state.cartReducer);
   const openDialog = () => {
     setOpen(true);
   };
 
+  
   return (
     <Wrapper>
       {account !== "" ? (
@@ -69,12 +70,11 @@ function CustomButton() {
         <Badge badgeContent={CartItems?.length} color="secondary">
           <ShoppingCartIcon />
         </Badge>
-        <Typography style={{marginLeft:10}}>Cart</Typography>
+        <Typography style={{ marginLeft: 10 }}>Cart</Typography>
       </Container>
       <LoginDialog open={open} setOpen={setOpen} />
     </Wrapper>
   );
 }
-
 
 export default CustomButton;

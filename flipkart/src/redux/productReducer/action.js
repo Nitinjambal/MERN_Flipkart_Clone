@@ -5,14 +5,14 @@ import { GET_PRODUCT_DETAILS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, 
 const URL = "http://localhost:8080/api/v1/products"
 
 export const getProducts = () => async (dispatch) => {
-    dispatch({ type: GET_PRODUCT_REQUEST })
     try {
+        dispatch({ type: GET_PRODUCT_REQUEST })
         const { data } = await axios.get(`${URL}/products`);
-        // console.log(data)
+        console.log(data)
         dispatch({ type: GET_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
-        console.log('error:', error)
-        dispatch({ type: GET_PRODUCT_FAILURE })
+        console.log('error:', error.message)
+        dispatch({ type: GET_PRODUCT_FAILURE,payload:error.message })
     }
 }
 
@@ -22,11 +22,11 @@ export const getProducts = () => async (dispatch) => {
 
 
 export const getProductDetails = (id) => async (dispatch) => {
-    dispatch({ type: GET_PRODUCT_REQUEST })
     try {
+        dispatch({ type: GET_PRODUCT_REQUEST })
         const { data } = await axios.get(`${URL}/product/${id}`);
         console.log('data:', data.product)
-        dispatch({ type: GET_PRODUCT_DETAILS_SUCCESS,payload:data.product })
+        dispatch({ type: GET_PRODUCT_DETAILS_SUCCESS, payload: data })
 
     } catch (error) {
         console.log('error:', error)
