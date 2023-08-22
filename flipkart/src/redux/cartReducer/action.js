@@ -5,19 +5,20 @@ const URL = "http://localhost:8080/api/v1/products"
 
 
 export const addToCart = (id, quantity) => async (dispatch) => {
+    dispatch({ type: CART_REQUEST })
     try {
-        dispatch({ type: CART_REQUEST })
         const { data } = await axios.get(`${URL}/product/${id}`)
-        console.log('dataProduct:', data.product)
-        console.log('data:', data)
-
-
-        dispatch({ type: ADD_CART_SUCCESS, payload: { ...data, quantity } })
+        const {product}=data
+        // console.log('product:', product)
+        // console.log('dataProduct:', data.product)
+        // console.log('data:', data)
+        dispatch({ type: ADD_CART_SUCCESS, payload: { ...product, quantity } })
     } catch (error) {
         console.log('error:', error)
         dispatch({ type: CART_FAILURE })
     }
 }
+
 
 
 

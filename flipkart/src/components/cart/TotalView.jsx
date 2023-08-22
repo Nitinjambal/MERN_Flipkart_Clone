@@ -36,18 +36,17 @@ function TotalView({ cartItems }) {
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
 
-
-useEffect(()=>{
-  totalAmount()
-},[cartItems])
+  useEffect(() => {
+    totalAmount();
+  }, [cartItems]);
 
   const totalAmount = () => {
     let price = 0,
       discount = 0;
     cartItems?.map((item) => {
-      console.log(item)
-      price += item.product.price.mrp;
-      discount += item.product.price.mrp - item.product.price.cost;
+      console.log(item);
+      price += item.price.mrp;
+      discount += item.price.mrp - item.price.cost;
     });
     setPrice(price);
     setDiscount(discount);
@@ -75,12 +74,10 @@ useEffect(()=>{
 
         <Typography variant="h6">
           Total Amount
-          <Price component="span">₹{price-discount+40}</Price>
+          <Price component="span">₹{price - discount + 40}</Price>
         </Typography>
 
-        <Discount>
-          You WIll save ₹{discount-40} on this order
-        </Discount>
+        <Discount>You WIll save ₹{discount - 40} on this order</Discount>
       </Container>
     </Box>
   );

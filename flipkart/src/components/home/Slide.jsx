@@ -107,7 +107,7 @@ function Slide({ products, title, timer }) {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {products &&
+        {products && products.length &&
           products?.map((product) => (
             <Link
             key={product.id}

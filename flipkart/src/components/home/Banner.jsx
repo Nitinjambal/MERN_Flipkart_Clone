@@ -45,7 +45,7 @@ function Banner() {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-      {bannerData &&
+      {bannerData && bannerData.length &&
         bannerData?.map(data => (
           <Image key={data.id} src={data.url} alt="banner" />
         ))}

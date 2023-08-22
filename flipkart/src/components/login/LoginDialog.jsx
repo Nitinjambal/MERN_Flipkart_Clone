@@ -42,9 +42,6 @@ const Wrapper = styled(Box)`
   }
 `;
 
-
-
-
 const LoginBtn = styled(Button)`
   text-transform: none;
   background: #fb641b;
@@ -143,8 +140,7 @@ function LoginDialog({ open, setOpen }) {
     console.log(" res:", res);
     if (!res) return;
     handleClose();
-    setAccount(signup.firstname+signup.lastname);
-
+    setAccount(signup.firstname + signup.lastname);
   };
 
   console.log(signup);
@@ -152,7 +148,6 @@ function LoginDialog({ open, setOpen }) {
   const onValueChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
-
 
   const loginUer = async () => {
     let res = await loginUser(login);
@@ -164,7 +159,6 @@ function LoginDialog({ open, setOpen }) {
       setError(true);
     }
   };
-  
 
   console.log(login);
 

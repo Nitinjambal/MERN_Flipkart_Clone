@@ -35,7 +35,7 @@ function Search() {
   const [text, setText] = useState("");
   const dispatch = useDispatch("");
   const { products } = useSelector((store) => store.productReducer.products);
-  console.log("products:", products);
+  // console.log("products:", products);
 
   useEffect(() => {
     dispatch(getProducts());

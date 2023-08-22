@@ -72,7 +72,7 @@ function Cart() {
 
             {cartItems?.map((item) => (
               // console.log(item)
-              <CartItem key={item.product.id} item={item} />
+              <CartItem key={item.id} item={item} />
             ))}
             <ButtonWrapper>
               <StyledButton onClick={() => buyNow()}>Place Order</StyledButton>

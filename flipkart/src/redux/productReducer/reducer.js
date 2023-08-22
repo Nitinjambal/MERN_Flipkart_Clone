@@ -29,7 +29,7 @@ export const reducer = (state = initialState, { type, payload }) => {
 
         case GET_PRODUCT_DETAILS_SUCCESS:
             return {
-                ...state, isLoading: false, isError: false, singleProduct: payload, products: []
+                ...state, isLoading: false, isError: false, singleProduct: payload
             }
         default:    
             return state

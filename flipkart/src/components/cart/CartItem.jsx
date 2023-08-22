@@ -34,7 +34,7 @@ const Remove = styled(Button)`
 function CartItem({ item }) {
   console.log(' item :',  item )
   const dispatch = useDispatch();
-  const { product } = item;
+  // const { product } = item;
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
@@ -46,14 +46,14 @@ function CartItem({ item }) {
     <Component>
       <LeftComponent>
         <img
-          src={product.url}
+          src={item.url}
           alt="product"
           style={{ height: 110, width: 110 }}
         />
         <BtnGroup />
       </LeftComponent>
       <Box style={{ margin: "20px" }}>
-        <Typography>{addEllipsis(product.title.longTitle)}</Typography>
+        <Typography>{addEllipsis(item.title.longTitle)}</Typography>
         <SmallText>
           Seller:RetailNet
           <Box component="span">
@@ -67,16 +67,16 @@ function CartItem({ item }) {
 
         <Typography style={{ margin: "20px 0" }}>
           <Box component="span" style={{ fontWeight: 600, fontSize: 18 }}>
-            ₹{product.price.cost}
+            ₹{item.price.cost}
           </Box>{" "}
           <Box component="span" style={{ color: "#878787" }}>
-            <strike>₹{product.price.mrp}</strike>
+            <strike>₹{item.price.mrp}</strike>
           </Box>{" "}
           <Box component="span" style={{ color: "#388E3C" }}>
-            {product.price.discount}
+            {item.price.discount}
           </Box>
         </Typography>
-        <Remove onClick={() => removeItemFromCart(product.id)}>Remove</Remove>
+        <Remove onClick={() => removeItemFromCart(item.id)}>Remove</Remove>
       </Box>
     </Component>
   );

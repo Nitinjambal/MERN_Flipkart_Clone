@@ -18,14 +18,10 @@ function Home() {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store.productReducer.products);
 
-  console.log(products);
+  // console.log(products);
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
-
-
-  
 
   return (
     <>

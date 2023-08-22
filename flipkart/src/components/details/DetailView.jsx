@@ -23,19 +23,21 @@ const RightContainer = styled(Grid)`
   margin-top: 50px;
 `;
 
+
 function DetailView() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log("id:", id);
   const { product } = useSelector(
     (store) => store.productReducer.singleProduct
   );
-  console.log("stata:", product);
+
 
   useEffect(() => {
-    if (product && id !== product.id) 
+    // if (product && id !== product.id) 
     dispatch(getSingleProductDetails(id));
-  }, [dispatch, id,product]);
+  }, [dispatch, id ]);
+
+
 
   return (
     <Component>
