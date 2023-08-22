@@ -35,7 +35,7 @@ const StyledButton = styled(Button)`
   width: 250px;
   height: 51px;
   border-radius: 2px;
-  :hover{
+  :hover {
     color: #fff;
     background: #fb641b;
   }
@@ -48,16 +48,14 @@ const LeftComponent = styled(Grid)(({ theme }) => ({
   },
 }));
 
-
-
-const buyNow=async()=>{
-  let respose= await payUsingPaytm({amount:500,email:"demo@gmail.com"})
-  let information={
-   action:'https://securegw-stage.paytm.in/order/process',
-   params:respose
-  }
+const buyNow = async () => {
+  let respose = await payUsingPaytm({ amount: 500, email: "demo@gmail.com" });
+  let information = {
+    action: "https://securegw-stage.paytm.in/order/process",
+    params: respose,
+  };
   post(information);
- }
+};
 
 function Cart() {
   const { cartItems } = useSelector((store) => store.cartReducer);
@@ -71,7 +69,6 @@ function Cart() {
             <Header>
               <Typography>My Cart ({cartItems.length})</Typography>
             </Header>
-
 
             {cartItems?.map((item) => (
               // console.log(item)

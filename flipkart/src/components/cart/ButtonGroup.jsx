@@ -10,11 +10,12 @@ const StyledBtn = styled(Button)`
 `;
 
 function BtnGroup() {
+  const [value, setValue] = useState(1);
   return (
     <Component>
-      <StyledBtn>-</StyledBtn>
-      <StyledBtn disabled>1</StyledBtn>
-      <StyledBtn>+</StyledBtn>
+      <StyledBtn onClick={() => setValue((prev) => prev - 1)}>-</StyledBtn>
+      <StyledBtn disabled>{value}</StyledBtn>
+      <StyledBtn onClick={() => setValue((prev) => prev + 1)}>+</StyledBtn>
     </Component>
   );
 }

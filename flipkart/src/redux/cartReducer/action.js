@@ -5,8 +5,8 @@ const URL = "http://localhost:8080/api/v1/products"
 
 
 export const addToCart = (id, quantity) => async (dispatch) => {
-    dispatch({ type: CART_REQUEST })
     try {
+        dispatch({ type: CART_REQUEST })
         const { data } = await axios.get(`${URL}/product/${id}`)
         console.log('dataProduct:', data.product)
         console.log('data:', data)
@@ -18,6 +18,7 @@ export const addToCart = (id, quantity) => async (dispatch) => {
         dispatch({ type: CART_FAILURE })
     }
 }
+
 
 
 

@@ -44,6 +44,8 @@ function Search() {
   const getText = (text) => {
     setText(text);
   };
+
+  
   return (
     <SearchContainer>
       <InputSearchBase

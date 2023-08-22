@@ -110,6 +110,7 @@ function Slide({ products, title, timer }) {
         {products &&
           products?.map((product) => (
             <Link
+            key={product.id}
               to={`product/${product.id}`}
               style={{ textDecoration: "none" }}
             >

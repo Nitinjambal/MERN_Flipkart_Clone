@@ -1,13 +1,20 @@
-import { ADD_CART_SUCCESS, REMOVE_CART_SUCCESS } from "./actionTypes"
+import { ADD_CART_SUCCESS, CART_FAILURE, CART_REQUEST, REMOVE_CART_SUCCESS } from "./actionTypes"
 
 
 const initialState = {
+    isLoading: false,
+    isError: false,
     cartItems: []
 }
 
 
 export const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case CART_REQUEST:
+            return {
+                ...state, isLoading: true, isError: false,cartItems: []
+            }
+
         case ADD_CART_SUCCESS: {
             const item = payload;
             const exist = state.cartItems.find(product => product.id === item.id);
@@ -17,6 +24,11 @@ export const reducer = (state = initialState, { type, payload }) => {
                 return { ...state, cartItems: [...state.cartItems, item] }
             }
         }
+
+        case CART_FAILURE:
+            return{
+                ...state,isLoading:false,isError:true, cartItems: []
+            }
 
 
         case REMOVE_CART_SUCCESS: {

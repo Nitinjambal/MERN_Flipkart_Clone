@@ -32,6 +32,7 @@ const Remove = styled(Button)`
 `;
 
 function CartItem({ item }) {
+  console.log(' item :',  item )
   const dispatch = useDispatch();
   const { product } = item;
   const fassured =
@@ -66,13 +67,13 @@ function CartItem({ item }) {
 
         <Typography style={{ margin: "20px 0" }}>
           <Box component="span" style={{ fontWeight: 600, fontSize: 18 }}>
-            ₹{product?.price?.cost}
+            ₹{product.price.cost}
           </Box>{" "}
           <Box component="span" style={{ color: "#878787" }}>
-            <strike>₹{product?.price?.mrp}</strike>
+            <strike>₹{product.price.mrp}</strike>
           </Box>{" "}
           <Box component="span" style={{ color: "#388E3C" }}>
-            {product?.price?.discount}
+            {product.price.discount}
           </Box>
         </Typography>
         <Remove onClick={() => removeItemFromCart(product.id)}>Remove</Remove>

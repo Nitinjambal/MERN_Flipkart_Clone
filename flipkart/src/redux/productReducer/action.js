@@ -19,9 +19,7 @@ export const getProducts = () => async (dispatch) => {
 
 
 
-
-
-export const getProductDetails = (id) => async (dispatch) => {
+export const getSingleProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: GET_PRODUCT_REQUEST })
         const { data } = await axios.get(`${URL}/product/${id}`);
@@ -31,6 +29,5 @@ export const getProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         console.log('error:', error)
         dispatch({ type: GET_PRODUCT_FAILURE })
-
     }
 }
