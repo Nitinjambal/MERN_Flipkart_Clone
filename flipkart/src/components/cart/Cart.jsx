@@ -15,6 +15,7 @@ const Container = styled(Grid)(({ theme }) => ({
   },
 }));
 
+
 const Header = styled(Box)`
   padding: 15px 24px;
   background-color: #fff;
@@ -60,6 +61,7 @@ const buyNow = async () => {
 function Cart() {
   const { cartItems } = useSelector((store) => store.cartReducer);
   console.log('cartItems:', cartItems)
+
 
   return (
     <>

@@ -24,6 +24,7 @@ export const loginUser = async (data) => {
 export const payUsingPaytm = async (data) => {
     try {
         let response = await axios.post(`${URL}/payment/payment`, data)
+        console.log('response:', response)
         return response.data
     } catch (error) {
         console.log('error while calling payment api:', error)
