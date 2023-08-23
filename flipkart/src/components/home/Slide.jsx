@@ -5,10 +5,13 @@ import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
 import { Link } from "react-router-dom";
 
+
 const Componenet = styled(Box)`
   margin-top: 10px;
   background: #ffffff;
 `;
+
+
 
 const Deal = styled(Box)`
   padding: 15px 20px;
@@ -94,6 +97,7 @@ function Slide({ products, title, timer }) {
       <Divider />
 
       <Carousel
+
         responsive={responsive}
         swipeable={false}
         draggable={false}
@@ -107,7 +111,7 @@ function Slide({ products, title, timer }) {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {products && products.length &&
+        {products && products?.length &&
           products?.map((product) => (
             <Link
             key={product.id}
@@ -126,6 +130,7 @@ function Slide({ products, title, timer }) {
               </Box>
             </Link>
           ))}
+          
       </Carousel>
     </Componenet>
   );

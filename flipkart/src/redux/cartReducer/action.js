@@ -8,11 +8,8 @@ export const addToCart = (id, quantity) => async (dispatch) => {
     dispatch({ type: CART_REQUEST })
     try {
         const { data } = await axios.get(`${URL}/product/${id}`)
-        const {product}=data
-        // console.log('product:', product)
-        // console.log('dataProduct:', data.product)
-        // console.log('data:', data)
-        dispatch({ type: ADD_CART_SUCCESS, payload: { ...product, quantity } })
+        console.log('addCartproduct:',typeof(data.product))
+        dispatch({ type: ADD_CART_SUCCESS, payload: data.product })
     } catch (error) {
         console.log('error:', error)
         dispatch({ type: CART_FAILURE })

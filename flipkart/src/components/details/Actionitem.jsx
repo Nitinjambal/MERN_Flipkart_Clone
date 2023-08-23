@@ -21,9 +21,9 @@ const Image = styled("img")({
 });
 
 const StyledBtn = styled(Button)(({ theme }) => ({
-  width: " 48%",
+  width: "48%",
   height: 50,
-  borderRadius: 2,
+  borderRadius: 1,
   [theme.breakpoints.down("lg")]: {
     width: "46%",
   },
@@ -41,16 +41,17 @@ function Actionitem({ product }) {
 
 
 
+
   const addItemToCart = () => {
     dispatch(addToCart(id, quantity));
     navigate("/cart");
   };
 
   const buyNow=async()=>{
-   let respose= await payUsingPaytm({amount:500,email:"demo@gmail.com"})
+   let response= await payUsingPaytm({amount:500,email:"demo@gmail.com"})
    let information={
     action:'https://securegw-stage.paytm.in/order/process',
-    params:respose
+    params:response
    }
    post(information);
   }

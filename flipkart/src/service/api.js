@@ -7,10 +7,8 @@ export const signupUser = async (data) => {
         return await axios.post(`${URL}/users/register`, data)
     } catch (error) {
         console.log('error:', error)
-
     }
 }
-
 
 
 
@@ -25,10 +23,9 @@ export const loginUser = async (data) => {
 
 export const payUsingPaytm = async (data) => {
     try {
-        let res = await axios.post(`${URL}/payment/payment`, data)
-        return res.data
+        let response = await axios.post(`${URL}/payment/payment`, data)
+        return response.data
     } catch (error) {
-        console.log('error:', error)
-
+        console.log('error while calling payment api:', error)
     }
 }

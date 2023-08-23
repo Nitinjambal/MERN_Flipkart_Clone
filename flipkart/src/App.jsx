@@ -7,6 +7,7 @@ import DetailView from "./components/details/DetailView";
 import Cart from "./components/Cart/Cart";
 
 function App() {
+  
   return (
     <DataProvider>
       <BrowserRouter>

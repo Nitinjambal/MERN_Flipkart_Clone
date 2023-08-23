@@ -7,6 +7,7 @@ const Heading = styled(Box)`
   border-bottom: 1px solid #f0f0f0;
 `;
 
+
 const ActualHeading = styled(Typography)`
   color: #878787;
 `;
@@ -33,8 +34,11 @@ const Discount = styled(Typography)`
 `;
 
 function TotalView({ cartItems }) {
+  console.log("cartItems:", cartItems);
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
+
+  // const {product}=cartItems
 
   useEffect(() => {
     totalAmount();
@@ -43,8 +47,8 @@ function TotalView({ cartItems }) {
   const totalAmount = () => {
     let price = 0,
       discount = 0;
-    cartItems?.map((item) => {
-      console.log(item);
+      cartItems?.map((item) => {
+      console.log("this is item", item);
       price += item.price.mrp;
       discount += item.price.mrp - item.price.cost;
     });

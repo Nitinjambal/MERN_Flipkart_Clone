@@ -32,6 +32,7 @@ function DetailView() {
   );
 
 
+  
   useEffect(() => {
     // if (product && id !== product.id) 
     dispatch(getSingleProductDetails(id));

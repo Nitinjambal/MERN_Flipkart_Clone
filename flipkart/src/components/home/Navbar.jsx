@@ -12,6 +12,7 @@ const Component = styled(Box)(({ theme }) => ({
   },
 }));
 
+
 const Container = styled(Box)`
   padding: 12px 8px;
   text-align: center;
@@ -27,7 +28,7 @@ const Text = styled(Typography)`
 function Navbar() {
   return (
     <Component>
-      {navData && navData.length && navData?.map((data) => (
+      {navData && navData?.length && navData?.map((data) => (
         <Container key={data.url}>
           <img src={data.url} alt="nav" style={{ width: 64 }} />
           <Text>{data.text}</Text>

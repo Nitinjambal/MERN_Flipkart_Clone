@@ -5,7 +5,6 @@ import LoginDialog from "../login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
-import CartItem from "../Cart/CartItem";
 import { useSelector } from "react-redux";
 
 const Wrapper = styled(Box)(({ theme }) => ({
@@ -47,10 +46,14 @@ const LoginBtn = styled(Button)`
 function CustomButton() {
   const [open, setOpen] = useState(false);
   const { account, setAccount } = useContext(DataContext);
-  const { CartItems } = useSelector((state) => state.cartReducer);
+  const { cartItems } = useSelector((state) => state.cartReducer);
+
+  // const {cartItems}=useSelector(state=>console.log(state.cartReducer))
+
   const openDialog = () => {
     setOpen(true);
   };
+
 
   
   return (
@@ -67,7 +70,7 @@ function CustomButton() {
       </Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
       <Container to="/cart">
-        <Badge badgeContent={CartItems?.length} color="secondary">
+        <Badge badgeContent={cartItems?.length} color="secondary">
           <ShoppingCartIcon />
         </Badge>
         <Typography style={{ marginLeft: 10 }}>Cart</Typography>
