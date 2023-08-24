@@ -16,6 +16,7 @@ const Container = styled(Grid)(({ theme }) => ({
 }));
 
 
+
 const Header = styled(Box)`
   padding: 15px 24px;
   background-color: #fff;
@@ -49,13 +50,9 @@ const LeftComponent = styled(Grid)(({ theme }) => ({
   },
 }));
 
+
 const buyNow = async () => {
-  let respose = await payUsingPaytm({ amount: 500, email: "demo@gmail.com" });
-  let information = {
-    action: "https://securegw-stage.paytm.in/order/process",
-    params: respose,
-  };
-  post(information);
+  payUsingPaytm()
 };
 
 function Cart() {
@@ -65,6 +62,7 @@ function Cart() {
 
   return (
     <>
+
       {cartItems.length ? (
         <Container container>
           <LeftComponent item lg={9} md={9} sm={12} xs={12}>
