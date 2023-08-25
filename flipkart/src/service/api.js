@@ -37,7 +37,7 @@ export const payUsingPaytm = async (data) => {
             "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": function (response) {
 
-                window.location.href = "http://localhost:5173/success"
+                window.location.href = "https://stellular-peony-0cc62d.netlify.app/success"
 
             },
             "prefill": {
