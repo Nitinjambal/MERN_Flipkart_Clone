@@ -41,8 +41,6 @@ function Actionitem({ product }) {
 
 
 
-
-
   const addItemToCart = () => {
     dispatch(addToCart(id, quantity));
     navigate("/cart");
@@ -51,9 +49,6 @@ function Actionitem({ product }) {
 
   const buyNow=async(product)=>{
   payUsingPaytm(product)
-
-
-
   }
   
   return (

@@ -36,9 +36,9 @@ export const payUsingPaytm = async (data) => {
             "image": "https://razorpay.com/docs/build/browser/static/razorpay-docs-light.009264f2.svg",
             "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": function (response) {
+                console.log("working")
 
                 window.location.href = "https://stellular-peony-0cc62d.netlify.app/success"
-
             },
             "prefill": {
                 "name": "Gaurav Kumar",
