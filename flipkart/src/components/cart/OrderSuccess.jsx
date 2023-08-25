@@ -4,7 +4,7 @@ import { Box, Typography, styled } from "@mui/material";
 import { Link, Navigate } from "react-router-dom";
 
 const Container = styled(Box)`
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   width: 60%;
   height: 50vh;
   margin: auto;
