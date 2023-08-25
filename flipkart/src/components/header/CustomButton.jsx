@@ -48,8 +48,7 @@ function CustomButton() {
   const { account, setAccount } = useContext(DataContext);
   const { cartItems } = useSelector((state) => state.cartReducer);
 
-  // const {cartItems}=useSelector(state=>console.log(state.cartReducer))
-
+  
   const openDialog = () => {
     setOpen(true);
   };

@@ -7,7 +7,7 @@ export const signupUser = async (data) => {
     try {
         return await axios.post(`${URL}/users/register`, data)
     } catch (error) {
-        console.log('error:', error)
+        // console.log('error:', error)
     }
 }
 
@@ -17,7 +17,7 @@ export const loginUser = async (data) => {
     try {
         return await axios.post(`${URL}/users/login`, data)
     } catch (error) {
-        console.log('error:', error)
+        // console.log('error:', error)
         return error.response
     }
 }
@@ -54,7 +54,7 @@ export const payUsingPaytm = async (data) => {
         };
         const rzp1 = new Razorpay(options);
         rzp1.on('payment.failed', function (response) {
-            console.log(error)
+            // console.log(error)
             alert(response.error.code);
             alert(response.error.description);
             alert(response.error.source);
@@ -66,7 +66,7 @@ export const payUsingPaytm = async (data) => {
         rzp1.open();
 
     } catch (error) {
-        console.log('error:', error)
+        // console.log('error:', error)
     }
 }
 

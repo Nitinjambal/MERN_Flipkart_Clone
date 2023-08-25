@@ -19,7 +19,7 @@ export const reducer = (state = initialState, { type, payload }) => {
 
         case ADD_CART_SUCCESS: {
             const item = payload;
-            console.log('item:', item)
+            // console.log('item:', item)
             const exist = state.cartItems.find(product => product.id == item.id);
             if (exist) {
                 return { ...state, isLoading: false, isError: false, cartItems: state.cartItems.map(data => data.id == exist.id ? item : data) }
@@ -35,7 +35,7 @@ export const reducer = (state = initialState, { type, payload }) => {
 
 
         case REMOVE_CART_SUCCESS: {
-            console.log("reducerpayload", payload)
+            // console.log("reducerpayload", payload)
             return { ...state, cartItems: state.cartItems.filter(product => product.id !== payload) }
         }
 

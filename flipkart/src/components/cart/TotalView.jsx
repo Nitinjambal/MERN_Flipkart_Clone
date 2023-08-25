@@ -34,7 +34,6 @@ const Discount = styled(Typography)`
 `;
 
 function TotalView({ cartItems }) {
-  console.log("cartItems:", cartItems);
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
 
@@ -48,7 +47,6 @@ function TotalView({ cartItems }) {
     let price = 0,
       discount = 0;
       cartItems?.map((item) => {
-      console.log("this is item", item);
       price += item.price.mrp;
       discount += item.price.mrp - item.price.cost;
     });

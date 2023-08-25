@@ -138,13 +138,11 @@ function LoginDialog({ open, setOpen }) {
 
   const handleSignup = async () => {
     let res = await signupUser(signup);
-    // console.log(" res:", res);
     if (!res) return;
     handleClose();
     setAccount(signup.firstname + signup.lastname);
   };
 
-  // console.log(signup);
 
   const onValueChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -152,7 +150,6 @@ function LoginDialog({ open, setOpen }) {
 
   const loginUer = async () => {
     let res = await loginUser(login);
-    // console.log("this", res);
     if (res.status == 200) {
       handleClose();
       setAccount(res.data.isUserPresent.firstname);
@@ -161,7 +158,6 @@ function LoginDialog({ open, setOpen }) {
     }
   };
 
-  // console.log(login);
 
   return (
     <Dialog

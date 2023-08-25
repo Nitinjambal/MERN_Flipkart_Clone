@@ -32,16 +32,12 @@ const Remove = styled(Button)`
 `;
 
 function CartItem({ item }) {
-  console.log(' item :',  item )
   const dispatch = useDispatch();
-  // const { product } = item;
-  // console.log('product:', product)
   
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
   const removeItemFromCart = (id) => {
-    // console.log("id:", id);
     dispatch(removeFromCart(id));
   };
 

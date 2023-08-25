@@ -13,7 +13,6 @@ const LeftComponent = styled(Box)(({ theme }) => ({
   },
 }));
 
-
 const RightComponent = styled(Box)(({ theme }) => ({
   background: "#FFFFFF",
   padding: 5,

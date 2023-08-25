@@ -11,7 +11,7 @@ export const getProducts = () => async (dispatch) => {
         // console.log(data)
         dispatch({ type: GET_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
-        console.log('error:', error.message)
+        // console.log('error:', error.message)
         dispatch({ type: GET_PRODUCT_FAILURE,payload:error.message })
     }
 }
@@ -29,7 +29,7 @@ export const getSingleProductDetails = (id) => async (dispatch) => {
         dispatch({ type: GET_PRODUCT_DETAILS_SUCCESS, payload: data })
 
     } catch (error) {
-        console.log('error:', error)
+        // console.log('error:', error)
         dispatch({ type: GET_PRODUCT_FAILURE })
     }
 }

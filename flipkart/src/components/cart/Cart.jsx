@@ -57,7 +57,6 @@ const buyNow = async () => {
 
 function Cart() {
   const { cartItems } = useSelector((store) => store.cartReducer);
-  console.log('cartItems:', cartItems)
 
 
   return (
@@ -71,7 +70,6 @@ function Cart() {
             </Header>
 
             {cartItems && cartItems.length>0 && cartItems?.map((item) => (
-              // console.log(item)
               <CartItem key={item._id} item={item} />
             ))}
             <ButtonWrapper>

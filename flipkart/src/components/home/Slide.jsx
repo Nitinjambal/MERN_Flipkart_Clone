@@ -50,6 +50,13 @@ const Text = styled(Typography)`
   margin-top: 5px;
 `;
 
+const RenderTimer = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+      display: 'none'
+  }
+}));
+    
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -68,9 +75,9 @@ const responsive = {
 function Slide({ products, title, timer }) {
   const renderer = ({ hours, minutes, seconds }) => {
     return (
-      <Box variant="span">
+      <RenderTimer variant="span">
         {hours}:{minutes}:{seconds} Left
-      </Box>
+      </RenderTimer>
     );
   };
 
@@ -78,7 +85,7 @@ function Slide({ products, title, timer }) {
     <Componenet>
       <Deal>
         <DealText>{title}</DealText>
-        {timer && (
+        {timer &&  (
           <Timer>
             <img
               src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg"
@@ -97,35 +104,34 @@ function Slide({ products, title, timer }) {
       <Divider />
 
       <Carousel
-
-        responsive={responsive}
-        swipeable={false}
-        draggable={false}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={3000}
-        slidesToSlide={1}
-        keyBoardControl={true}
-        centerMode={true}
-        containerClass="carousel-container"
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
+          swipeable={false}
+          draggable={false}
+          responsive={responsive}
+          centerMode={true}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={10000}
+          keyBoardControl={true}
+          showDots={false}
+          containerClass="carousel-container"
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
       >
-        {products && products?.length &&
+        {
           products?.map((product) => (
             <Link
-            key={product.id}
-              to={`product/${product.id}`}
+            key={product?.id}
+              to={`product/${product?.id}`}
               style={{ textDecoration: "none" }}
             >
               <Box textAlign={"center"} style={{ padding: "25px 15px" }}>
-                <Image src={product.url} alt="product" />
+                <Image src={product?.url} alt="product" />
                 <Text style={{ fontWeight: 600, color: "#212121" }}>
-                  {product.title.shortTitle}
+                  {product?.title?.shortTitle}
                 </Text>
-                <Text style={{ color: "green" }}>{product.discount}</Text>
+                <Text style={{ color: "green" }}>{product?.discount}</Text>
                 <Text style={{ color: "#212121", opacity: ".6" }}>
-                  {product.tagline}
+                  {product?.tagline}
                 </Text>
               </Box>
             </Link>
@@ -135,5 +141,6 @@ function Slide({ products, title, timer }) {
     </Componenet>
   );
 }
+
 
 export default Slide;

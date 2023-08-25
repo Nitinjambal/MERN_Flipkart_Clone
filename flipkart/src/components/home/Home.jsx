@@ -18,7 +18,6 @@ function Home() {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store.productReducer.products);
 
-  // console.log(products);
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
@@ -28,19 +27,37 @@ function Home() {
       <Navbar />
       <Component>
         <Banner />
-        <MidSlide products={products} title="Deal of the Day" timer={true} />
+        {products && products.length > 0 && (
+          <MidSlide products={products} title="Deal of the Day" timer={true} />
+        )}
         <MidSection />
-        <Slide products={products} title="Discountes for You" timer={false} />
-        <Slide products={products} title="Suggested Itmes" timer={false} />
-        <Slide products={products} title="Top Selection" timer={false} />
-        <Slide products={products} title="Recommended Items" timer={false} />
-        <Slide products={products} title="Trending offers" timer={false} />
-        <Slide products={products} title="Season's top picks" timer={false} />
-        <Slide
-          products={products}
-          title="Top Deals on  Accessories"
-          timer={false}
-        />
+        {products && products.length > 0 && (
+          <>
+            <Slide
+              products={products}
+              title="Discountes for You"
+              timer={false}
+            />
+            <Slide products={products} title="Suggested Itmes" timer={false} />
+            <Slide products={products} title="Top Selection" timer={false} />
+            <Slide
+              products={products}
+              title="Recommended Items"
+              timer={false}
+            />
+            <Slide products={products} title="Trending offers" timer={false} />
+            <Slide
+              products={products}
+              title="Season's top picks"
+              timer={false}
+            />
+            <Slide
+              products={products}
+              title="Top Deals on  Accessories"
+              timer={false}
+            />
+          </>
+        )}
       </Component>
     </>
   );
