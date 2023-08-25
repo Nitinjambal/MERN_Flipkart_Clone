@@ -2,7 +2,7 @@
 import axios from "axios"
 import { Navigate } from "react-router-dom"
 
-const URL = "http://localhost:8080/api/v1"
+const URL = "https://flipkart-backend-deploy-zwcf.onrender.com/api/v1"
 export const signupUser = async (data) => {
     try {
         return await axios.post(`${URL}/users/register`, data)
@@ -24,7 +24,7 @@ export const loginUser = async (data) => {
 
 export const payUsingPaytm = async (data) => {
     try {
-        const { data: { key } } = await axios.get("http://localhost:8080/api/getkey")
+        const { data: { key } } = await axios.get("https://flipkart-backend-deploy-zwcf.onrender.com/api/getkey")
 
         let { data: { order } } = await axios.post(`${URL}/payment/checkout`, data)
         const options = {

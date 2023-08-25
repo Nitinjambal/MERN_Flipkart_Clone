@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ADD_CART_SUCCESS, CART_FAILURE, CART_REQUEST, REMOVE_CART_SUCCESS } from "./actionTypes"
 
-const URL = "http://localhost:8080/api/v1/products"
+const URL = "https://flipkart-backend-deploy-zwcf.onrender.com/api/v1/products"
 
 
 export const addToCart = (id, quantity) => async (dispatch) => {

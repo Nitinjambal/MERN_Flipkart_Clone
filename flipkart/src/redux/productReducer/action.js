@@ -2,7 +2,7 @@ import axios from "axios"
 import { GET_PRODUCT_DETAILS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./acitonTypes.js"
 
 
-const URL = "http://localhost:8080/api/v1/products"
+const URL = "https://flipkart-backend-deploy-zwcf.onrender.com/api/v1/products"
 
 export const getProducts = () => async (dispatch) => {
     dispatch({ type: GET_PRODUCT_REQUEST })
