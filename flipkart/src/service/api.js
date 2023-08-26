@@ -38,7 +38,7 @@ export const payUsingPaytm = async (data) => {
             "handler": function (response) {
                 console.log("working")
 
-                window.location.href = "https://stellular-peony-0cc62d.netlify.app/success"
+                window.location.href = "https://incredible-basbousa-7d2a10.netlify.app/success"
             },
             "prefill": {
                 "name": "Gaurav Kumar",
